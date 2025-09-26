@@ -7,23 +7,33 @@ import Users from './users'
 import './App.css'
 import { Suspense } from 'react'
 import Friends from './friends'
+import Posts from './posts'
+import Players from './players'
 
 
-const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users')
-.then(res => res.json())
+
+// const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users');
+// .then(res => res.json())
 
 
-const fetchFriends = async() =>{
-    const res = await fetch('https://jsonplaceholder.typicode.com/users')
-    return res.json();//promise ke return korbe
-}
+// const fetchFriends = async() =>{
+//     const res = await fetch('https://jsonplaceholder.typicode.com/users');
+//     return res.json();//promise ke return korbe
+// }
+
+
+// const fetchPosts = async() =>{
+//    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+//    return res.json();
+// }
 
 
 function App() {
   // const [count, setCount] = useState(0)
 
-   const friendsPromise = fetchFriends();
+  //  const friendsPromise = fetchFriends();
 
+  // const postPromise = fetchPosts();
 
   function handleClick() {
     alert('I am clicked')
@@ -48,9 +58,17 @@ function App() {
         <Users fetchUsers={fetchUsers}></Users>
       </Suspense> */}
 
-      <Suspense fallback={<h3>Friends are coming for treat...</h3>}>
+      {/* <Suspense fallback={<h3>Friends are coming for treat...</h3>}>
            <Friends  friendsPromise={friendsPromise}></Friends>
-      </Suspense>
+      </Suspense> */}
+
+
+      {/* <Suspense fallback={<h4>Posts are coming....</h4>}>
+         <Posts postPromise = {postPromise}></Posts>
+      </Suspense> */}
+
+       
+      <Players></Players>
 
       <Batsman></Batsman>
 

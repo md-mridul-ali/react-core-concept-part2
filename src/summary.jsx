@@ -30,3 +30,21 @@
 //     const data = res.json();
 //     return data;
 // }
+
+
+/***
+ * 
+ * total summary 
+ * *******************
+ * 1.event trigger
+ * 2.state
+ * 3.data load from API
+ * 4.loop through to display data
+ * why we use key prop
+ * 5.use
+ * 6.useEffect
+ * 7.useState
+ * 8.props
+ * 
+ * 
+ */
