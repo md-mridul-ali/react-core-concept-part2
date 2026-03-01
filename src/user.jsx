@@ -1,6 +1,6 @@
 export default function User ({user}){
 
-    console.log(user);
+    // console.log(user);
 
     const {name, email, phone, website} = user;
     return(

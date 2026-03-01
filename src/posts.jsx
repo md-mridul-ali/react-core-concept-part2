@@ -4,7 +4,7 @@ import Post from "./post";
 export default function Posts ({postPromise}) {
 
     const posts = use(postPromise);
-    console.log(posts)
+    // console.log(posts)
 
     return(
         <div style={{

@@ -6,6 +6,7 @@ import Batsman from './batsman';
 import Counter from './counter';
 import Users from './users';
 import Posts from './posts';
+import Albums from './albums';
 
 //fetch dynamic users data using normal fetch 
 const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users')
@@ -17,9 +18,17 @@ const fetchPosts = async() =>{
      const res = await fetch('https://jsonplaceholder.typicode.com/posts');
      return res.json();
 }
+
+//fetch dynamic albums data using async await arrow function
+const fetchAlbums = async() =>{
+  const res = await fetch('https://jsonplaceholder.typicode.com/albums');
+  return res.json();
+}
 function App() {
 
   const postPromise = fetchPosts();
+
+  const albumPromise = fetchAlbums();
 
   //normal function
   function handleClick() {
@@ -41,6 +50,10 @@ function App() {
     <>
 
       <h3>Vite + React</h3>
+
+      <Suspense fallback={<h3>Albums are loading....</h3>}>
+         <Albums albumPromise={albumPromise}></Albums>
+      </Suspense>
 
       <Suspense fallback={<h3>Users are loading...</h3>}>
         <Users fetchUsers = {fetchUsers}></Users>
