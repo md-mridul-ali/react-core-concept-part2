@@ -1,42 +1,51 @@
 
 
+import { Suspense } from 'react';
 import './App.css'
 import Batsman from './batsman';
 import Counter from './counter';
+import Users from './users';
 
-
+//fetch data using normal fetch 
+const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users')
+  .then(res => res.json())
 
 function App() {
-//normal function
-function handleClick (){
-  alert('I am clicked');
-}
+  //normal function
+  function handleClick() {
+    alert('I am clicked');
+  }
 
-//using arrow function
-const handleClick3 = () =>{
-  alert('I am click 3')
-}
+  //using arrow function
+  const handleClick3 = () => {
+    alert('I am click 3')
+  }
 
-//parameterized arrow function
-const handleClick5 = (num) =>{
-  const newNum = num + 5;
-  alert(newNum)
-}
+  //parameterized arrow function
+  const handleClick5 = (num) => {
+    const newNum = num + 5;
+    alert(newNum)
+  }
 
   return (
     <>
 
       <h3>Vite + React</h3>
+
+      <Suspense fallback={<h3>Users are loading...</h3>}>
+        <Users fetchUsers = {fetchUsers}></Users>
+      </Suspense>
+
       <Counter></Counter>
       <Batsman></Batsman>
-       <button onClick={handleClick}>Click Me</button>
-       <button onClick={function handleClick2(){
+      <button onClick={handleClick}>Click Me</button>
+      <button onClick={function handleClick2() {
         alert('I am clicked 2')
-       }}>Click Me 2</button>
-       <button onClick={handleClick3}>Click Me 3</button>
-       <button onClick={() => alert('I am click 4')}>Click Me 4</button>
-       <button onClick={ () => handleClick5(5)}>Click Me 5</button>
-     
+      }}>Click Me 2</button>
+      <button onClick={handleClick3}>Click Me 3</button>
+      <button onClick={() => alert('I am click 4')}>Click Me 4</button>
+      <button onClick={() => handleClick5(5)}>Click Me 5</button>
+
     </>
   )
 }
