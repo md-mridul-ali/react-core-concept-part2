@@ -1,10 +1,16 @@
-export default function Post({ post }) {
+export default function Post ({post}){
 
 
-    return (
-        <div className="card">
-            <h5>{post.title}</h5>
-            <p>{post.body}</p>
+     const {title, body} = post;
+    return(
+        <div style={{
+            border: '2px solid blue',
+            borderRadius: '20px',
+            marginBottom: '10px',
+            padding: '20px'
+        }}>
+            <h3>Title: {title}</h3>
+            <p>{body}</p>
         </div>
     )
 }

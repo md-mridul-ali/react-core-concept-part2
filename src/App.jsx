@@ -5,12 +5,22 @@ import './App.css'
 import Batsman from './batsman';
 import Counter from './counter';
 import Users from './users';
+import Posts from './posts';
 
-//fetch data using normal fetch 
+//fetch dynamic users data using normal fetch 
 const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users')
   .then(res => res.json())
 
+
+//fetch dynamic posts data using async await and arrow function
+const fetchPosts = async() =>{
+     const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+     return res.json();
+}
 function App() {
+
+  const postPromise = fetchPosts();
+
   //normal function
   function handleClick() {
     alert('I am clicked');
@@ -34,6 +44,10 @@ function App() {
 
       <Suspense fallback={<h3>Users are loading...</h3>}>
         <Users fetchUsers = {fetchUsers}></Users>
+      </Suspense>
+
+      <Suspense fallback={<h3>Posts are loading...</h3>}>
+        <Posts postPromise={postPromise}></Posts>
       </Suspense>
 
       <Counter></Counter>
